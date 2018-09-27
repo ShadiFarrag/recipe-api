@@ -15,22 +15,24 @@ import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class IngerdientsServiceTest {
+public class NutritionServiceTest {
 	
 	@Autowired
 	NutritionService nutritionService;
 	
 	@Test
-	public void testIngerdientsCall() {
+	public void testNutritionVsFoodNameCall() {
+		String query = "1 lb. jumbo shell-on shrimp (16 to 20 per lb.), preferably deveined";
+		String result = "shell";
 		
-		Ingredient testIngerdient = nutritionService.getIngredientWithNutrition("burger");
+		Ingredient testIngerdient = nutritionService.getIngredientWithNutrition(query);
 		String foodName = "";
 		
 		if(testIngerdient != null) {
 			foodName = testIngerdient.getFoodName();
 		}
 		
-		assertEquals(foodName, "burger");
+		assertEquals(foodName, result);
 	
 	}
 }
